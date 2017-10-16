@@ -1,18 +1,18 @@
 const mongoose = require('mongoose');
 
-const dinosaureSchema = new mongoose.Schema({
+let dinosaureSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
   },
   age: {
     type: Number,
-    required: true
+    required: false
   },
   type: {
     type: String,
     required: true
   }
-});
+}, {versionKey: false});
 
 module.exports = mongoose.model('Dinosaure', dinosaureSchema);

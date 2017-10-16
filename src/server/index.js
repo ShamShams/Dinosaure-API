@@ -14,6 +14,8 @@ mongoose.connect(config.mongoUrl, () => {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use("/", router)
+
 app.listen(config.port, () => {
   console.log(`Connected on port ${config.port}`)
 });

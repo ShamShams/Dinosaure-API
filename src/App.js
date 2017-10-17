@@ -1,18 +1,32 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import request from 'request';
+import './stylesheets/App.css';
+import List from './components/List';
+import Form from './components/Form';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dinosaures: []
+    };
+  }
+
+  componentDidMount() {
+    let url = "http://localhost:3001/dinosaures/";
+    request(url, (err, res, body) => {
+      if (err);
+      this.setState({
+        dinosaures: JSON.parse(body)
+      });
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <List dinosaures={this.state.dinosaures} />
+        <Form />
       </div>
     );
   }

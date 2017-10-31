@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import request from 'request';
-import './stylesheets/App.css';
-import List from './components/List';
-import Form from './components/Form';
+import '../stylesheets/App.css';
+import List from './List';
+import AddForm from './AddForm';
+import Header from './Header';
 
 class App extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    let url = "http://localhost:3001/dinosaures/";
+    let url = 'http://localhost:3001/dinosaures';
     request(url, (err, res, body) => {
       if (err);
       this.setState({
@@ -25,7 +26,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Form />
+        <Header />
+        <AddForm />
         <List dinosaures={this.state.dinosaures} />
       </div>
     );

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import request from 'request';
 import '../stylesheets/App.css';
 import List from './List';
-import AddForm from './AddForm';
+import DinoForm from './DinoForm';
 import Header from './Header';
 
 class App extends Component {
@@ -16,6 +16,7 @@ class App extends Component {
   componentDidMount() {
     let url = 'http://localhost:3001/dinosaures';
     request(url, (err, res, body) => {
+      console.log(body);
       if (err);
       this.setState({
         dinosaures: JSON.parse(body)
@@ -27,7 +28,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <AddForm />
+        <DinoForm />
         <List dinosaures={this.state.dinosaures} />
       </div>
     );

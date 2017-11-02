@@ -1,7 +1,8 @@
 const express = require('express');
 const Dinosaure = require('../model/dinosaure');
 const multer = require('multer');
-const upload = multer({ dest: '../../uploads/' });
+
+const upload = multer({ dest: 'uploads/' });
 const router = express.Router();
 
 // Ajouter un dinosaure :
@@ -11,7 +12,8 @@ router.post('/add', upload.single('photo'), (req, res) => {
     if (err) {
       res.send(err);
     }
-    res.redirect('http://localhost:3000');
+    res.redirect('http://localhost:3000/');
+    console.log(req.file);
   });
 });
 

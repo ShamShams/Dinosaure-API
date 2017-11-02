@@ -12,6 +12,9 @@ let dinosaureSchema = new mongoose.Schema({
   type: {
     type: String,
     required: true
+  },
+  photo: {
+    type: String
   }
 }, {versionKey: false});
 

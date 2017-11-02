@@ -1,10 +1,11 @@
 const express = require('express');
 const Dinosaure = require('../model/dinosaure');
-
+const multer = require('multer');
+const upload = multer({ dest: '../../uploads/' });
 const router = express.Router();
 
 // Ajouter un dinosaure :
-router.post('/add', (req, res) => {
+router.post('/add', upload.single('photo'), (req, res) => {
   let newDinosaure = new Dinosaure(req.body);
   newDinosaure.save((err, dino) => {
     if (err) {
@@ -44,6 +45,7 @@ router.post('/:id/update', (req, res) => {
   });
 });
 
+// Supprimer un dinosaure
 router.get('/:id/remove', (req, res) => {
   Dinosaure.findByIdAndRemove(req.params.id, (err) => {
     if (err) {

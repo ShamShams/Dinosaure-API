@@ -9,6 +9,7 @@ class AddForm extends Component {
           <input type="text" name="name" placeholder="Nom" />
           <input type="text" name="age" placeholder="Age" />
           <input type="text" name="type" placeholder="Espèce" />
+          <input type="file" name="photo"/>
           <button type="submit">Enregistrer</button>
         </form>
       </div>
